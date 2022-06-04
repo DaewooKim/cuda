@@ -59,3 +59,38 @@
     * 서로 독립적 수행이 가능함
 * SIMD vs SIMT
     * SIMD는 하나의 instruction을 여러 개의 data에 적용
+
+# CUDA Kernel 실행하기
+## CUDA Kernel Call를 위한 C function extension 문법
+```
+kernel_name <<<grid, block>>>(argument list);
+
+```
+* grid dim: block의 개수
+* block dim: 각 block당 thread의 개수
+
+## Threads의 Layout 예제
+* 8 elements/1 block
+    ```
+    kernel_name<<<4, 8>>>(argument list);
+    ```
+    * 32개의 data elements를 각 block 당 8개 elements로 그룹핑하면 4개의 blocks이 필요함
+    * ![threadIdx&blockIdx](./pics/threadIdx_blockIdx.png)
+
+* 32 elements/1 block
+    ```
+    kernel_name<<<1, 32>>>(argument list)
+    ```
+    * 32개의 data elements를 1 block에 모든 32개 elements를 그룹핑하면 1개의 blocks이 필요함
+
+## CUDA kernel의 비동기적 (Aynchronous) 실행
+* CUDA kernel 실행은 비동기적이며 CUDA kernel이 실행된 후 제어권이 CPU로 즉시 반환됨
+* Implicit synchronization 사례
+    * cudaMemcpy() 함수가 Host에서 호출되면, Host 애플리케이션은 모든 이전 kernel 호출이 종료된 후에 copy 동작을 시작함
+
+
+# CUDA Kernel 작성하기
+## CUDA Kernel이란?
+
+
+
