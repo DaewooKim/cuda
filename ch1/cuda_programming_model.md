@@ -20,7 +20,7 @@
 * Single kernel launch에 의해 생성된 모든 threads를 Grid라고 함
 * Grid 안의 모든 thread는 동일한 Global Memory Space를 공유함
 ## Compute Capability (GPU의 능력)
-* [Compute Copability] (https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities)
+* [Compute Copability](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities)
 * Max. Dim. of thread block : 3
 * Max. x- or y-dim. of a block : 1024
 * Max. z-dim of a block: 64
