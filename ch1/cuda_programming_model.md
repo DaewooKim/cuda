@@ -62,7 +62,7 @@
 
 # CUDA Kernel 실행하기
 ## CUDA Kernel Call를 위한 C function extension 문법
-```
+```C++
 kernel_name <<<grid, block>>>(argument list);
 
 ```
@@ -71,14 +71,14 @@ kernel_name <<<grid, block>>>(argument list);
 
 ## Threads의 Layout 예제
 * 8 elements/1 block
-    ```
+    ```C++
     kernel_name<<<4, 8>>>(argument list);
     ```
     * 32개의 data elements를 각 block 당 8개 elements로 그룹핑하면 4개의 blocks이 필요함
     * ![threadIdx&blockIdx](./pics/threadIdx_blockIdx.png)
 
 * 32 elements/1 block
-    ```
+    ```C++
     kernel_name<<<1, 32>>>(argument list)
     ```
     * 32개의 data elements를 1 block에 모든 32개 elements를 그룹핑하면 1개의 blocks이 필요함
@@ -91,6 +91,25 @@ kernel_name <<<grid, block>>>(argument list);
 
 # CUDA Kernel 작성하기
 ## CUDA Kernel이란?
+* Kernel 함수는 디바이스에서 실행되는 코드
+* Single thread를 위한 계산과 데이터 접근을 정의함
+* Kernel이 실행되면 많은 다른 CUDA thread는 병렬로 같은 계산을 수행함
 
+## CUDA Kernel 정의
+```C++
+__global__ void kernel_name(argument list) {
+    // do something
+}
+```
 
+## Function Type Qualifiers
+![Function_type_qualifiers](./pics/function_type_qualifiers.png)
+
+## CUDA Kernel 함수의 제약사항
+* Device 메모리만 접근 가능
+* 반환 타입은 void만을 갖음
+* 가변 인수를 지원하지 않음
+* 정적 변수를 지원하지 않음
+* 함수 포인터를 지원하지 않음
+* 비동기적으로 동작함 
 
