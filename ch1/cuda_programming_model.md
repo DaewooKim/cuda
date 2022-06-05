@@ -75,7 +75,7 @@ kernel_name <<<grid, block>>>(argument list);
     kernel_name<<<4, 8>>>(argument list);
     ```
     * 32개의 data elements를 각 block 당 8개 elements로 그룹핑하면 4개의 blocks이 필요함
-    * ![threadIdx&blockIdx](./pics/threadIdx_blockIdx.png)
+    * ![threadIdx_blockIdx](https://github.com/DaewooKim/cuda/blob/main/ch1/pics/threadIdx_blockIdx.PNG?raw=true)
 
 * 32 elements/1 block
     ```C++
@@ -103,7 +103,8 @@ __global__ void kernel_name(argument list) {
 ```
 
 ## Function Type Qualifiers
-![Function_type_qualifiers](./pics/function_type_qualifiers.png)
+![function_type_qualifiers](
+https://github.com/DaewooKim/cuda/blob/main/ch1/pics/function_type_qualifiers.PNG?raw=true)
 
 ## CUDA Kernel 함수의 제약사항
 * Device 메모리만 접근 가능
